@@ -1,7 +1,5 @@
 <?php
 
-namespace Product;
-
 interface MainProduct
 {
     public function getPrice();

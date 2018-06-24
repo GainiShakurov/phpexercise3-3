@@ -2,7 +2,9 @@
 
 namespace Product;
 
-abstract class Product
+require_once __DIR__ . '/MainProduct.php';
+
+abstract class Product implements \MainProduct
 {
 
     protected $price;

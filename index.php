@@ -7,24 +7,23 @@ use Basket\Order;
 
 function myAutoload($classNameWithNamespace)
 {
-    $pathToFile = $_SERVER['DOCUMENT_ROOT'] //ищем файлы начиная
-        . str_replace('\\', DIRECTORY_SEPARATOR, $classNameWithNamespace)
-        . '.php'; //добавляем расширение
 
-    if (file_exists($pathToFile)) {
+    foreach ($classNameWithNamespace as $currectClass) {
+        $pathToFile = $_SERVER['DOCUMENT_ROOT'] //ищем файлы начиная
+            . str_replace('\\', DIRECTORY_SEPARATOR, $currectClass)
+            . '.php'; //добавляем расширение
 
-        include "$pathToFile";
+        if (file_exists($pathToFile)) {
+
+            include "$pathToFile";
+        }
     }
 //
 }
 
-myAutoload('/Product/Product');
-myAutoload('/Product/ChangePrice/ChangePrice');
-myAutoload('/Product/SmartPhone/SmartPhone');
-myAutoload('/Product/Powerbank/Powerbank');
-myAutoload('/Product/Monitor/Monitor');
-myAutoload('/Basket/Basket');
-myAutoload('/Basket/Order');
+$namespacesArray = ['/Product/Product', '/Product/ChangePrice/ChangePrice', '/Product/SmartPhone/SmartPhone', '/Product/Powerbank/Powerbank', '/Product/Monitor/Monitor', '/Basket/Basket', '/Basket/Order', '/Product/Interfaces/MainProduct'];
+
+myAutoload($namespacesArray);
 
 $smart1 = new SmartPhone('m3 note', 500, 'meizu');
 $smart1->setPrice(20);
