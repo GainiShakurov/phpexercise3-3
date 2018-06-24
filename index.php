@@ -7,7 +7,6 @@ use Basket\Order;
 
 function myAutoload($classNameWithNamespace)
 {
-
     foreach ($classNameWithNamespace as $currectClass) {
         $pathToFile = $_SERVER['DOCUMENT_ROOT'] //ищем файлы начиная
             . str_replace('\\', DIRECTORY_SEPARATOR, $currectClass)
@@ -18,7 +17,6 @@ function myAutoload($classNameWithNamespace)
             include "$pathToFile";
         }
     }
-//
 }
 
 $namespacesArray = ['/Product/Product', '/Product/ChangePrice/ChangePrice', '/Product/SmartPhone/SmartPhone', '/Product/Powerbank/Powerbank', '/Product/Monitor/Monitor', '/Basket/Basket', '/Basket/Order', '/Product/Interfaces/MainProduct'];
